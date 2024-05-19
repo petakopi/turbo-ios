@@ -1,12 +1,16 @@
 import UIKit
 import Turbo
+import WebKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     private let navigationController = UINavigationController()
     private lazy var session: Session = {
-        let session = Session()
+        let configuration = WKWebViewConfiguration()
+        configuration.applicationNameForUserAgent = "Turbo Native iOS"
+
+        let session = Session(webViewConfiguration: configuration)
         session.delegate = self
         return session
     }()
@@ -25,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func visit() {
-        let url = URL(string: "http://localhost:3000")!
+        let url = URL(string: "http://localhost:3000/?pp=disable")!
         let controller = VisitableViewController(url: url)
 
         session.visit(controller, action: .advance)
