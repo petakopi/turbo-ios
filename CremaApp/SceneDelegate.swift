@@ -1,7 +1,10 @@
 import UIKit
+import Turbo
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+
+    private let navigationController = UINavigationController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // iOS has concept of scene where it can have
@@ -9,9 +12,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         // Create a window visual that we can run on
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = UIViewController()
+        self.window?.rootViewController = navigationController
         self.window?.rootViewController?.view.backgroundColor = .orange
         self.window?.makeKeyAndVisible()
+
+        visit()
+    }
+
+    private func visit() {
+        let controller = UIViewController()
+        controller.view.backgroundColor = .green
+        navigationController.pushViewController(controller, animated: true)
     }
 }
 

@@ -12,6 +12,7 @@
 		87479A1A2BF97FE500040813 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87479A192BF97FE500040813 /* ViewController.swift */; };
 		87479A1F2BF97FEA00040813 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87479A1E2BF97FEA00040813 /* Assets.xcassets */; };
 		87479A222BF97FEA00040813 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 87479A212BF97FEA00040813 /* Base */; };
+		87479A2B2BF9AC2A00040813 /* Turbo in Frameworks */ = {isa = PBXBuildFile; productRef = 87479A2A2BF9AC2A00040813 /* Turbo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87479A2B2BF9AC2A00040813 /* Turbo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +82,9 @@
 			dependencies = (
 			);
 			name = CremaApp;
+			packageProductDependencies = (
+				87479A2A2BF9AC2A00040813 /* Turbo */,
+			);
 			productName = CremaApp;
 			productReference = 87479A122BF97FE500040813 /* CremaApp.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +113,9 @@
 				Base,
 			);
 			mainGroup = 87479A092BF97FE500040813;
+			packageReferences = (
+				87479A292BF9AC2A00040813 /* XCRemoteSwiftPackageReference "turbo-ios" */,
+			);
 			productRefGroup = 87479A132BF97FE500040813 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -349,6 +357,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		87479A292BF9AC2A00040813 /* XCRemoteSwiftPackageReference "turbo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hotwired/turbo-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		87479A2A2BF9AC2A00040813 /* Turbo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87479A292BF9AC2A00040813 /* XCRemoteSwiftPackageReference "turbo-ios" */;
+			productName = Turbo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87479A0A2BF97FE500040813 /* Project object */;
 }
