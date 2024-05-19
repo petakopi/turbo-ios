@@ -4,8 +4,12 @@ import Turbo
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
-    private let session = Session()
     private let navigationController = UINavigationController()
+    private lazy var session: Session = {
+        let session = Session()
+        session.delegate = self
+        return session
+    }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // iOS has concept of scene where it can have
@@ -29,3 +33,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+extension SceneDelegate: SessionDelegate {
+    func session(_ session: Session, didProposeVisit proposal: VisitProposal) {
+        let controller = VisitableViewController(url: proposal.url)
+        session.visit(controller, options: proposal.options)
+        navigationController.pushViewController(controller, animated: true)
+    }
+
+    func session(_ session: Session, didFailRequestForVisitable visitable: Visitable, error: Error) {
+        print("didFailRequestForVisitable: \(error)")
+    }
+
+    func sessionWebViewProcessDidTerminate(_ session: Session) {
+        session.reload()
+    }
+}
